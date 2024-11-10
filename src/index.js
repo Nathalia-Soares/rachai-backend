@@ -12,9 +12,15 @@ const viagemController = require('./controllers/ViagemController');
 
 app.use(bodyParser.json());
 app.use(cors({
-  origin: '*',
+  origin: [
+    'http://localhost:3000',
+    'https://rachai-frontend-github.vercel.app',
+    'https://rachai-frontend-gitlab.vercel.app',
+    'https://rachai-backend-github.onrender.com:10000',
+    'https://rachai-backend-gitlab.onrender.com:10000',
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 const url = process.env.URL || 'localhost';
