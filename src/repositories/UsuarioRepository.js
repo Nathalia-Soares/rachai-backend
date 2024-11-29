@@ -2,7 +2,7 @@ const Usuario = require('../models/schemas').Usuario;
 
 const criarUsuario = async (usuarioData) => {
     const usuario = new Usuario(usuarioData);
-    await usuario.create();
+    await usuario.save();
     return usuario;
 };
 
@@ -26,6 +26,10 @@ const encontrarMotoristas = async () => {
     return await Usuario.find({ tipo_usuario: 'MOTORISTA' });
 };
 
+const encontrarPassageiros = async () => {
+    return await Usuario.find({ tipo_usuario: 'PASSAGEIRO' });
+};
+
 const encontrarTodosUsuarios = async () => {
     return await Usuario.find();
 };
@@ -37,5 +41,6 @@ module.exports = {
     atualizarUsuarioPorId,
     deletarUsuarioPorId,
     encontrarMotoristas,
+    encontrarPassageiros,
     encontrarTodosUsuarios
 };
